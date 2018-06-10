@@ -1,6 +1,6 @@
 <template>
   <div class="c-footer">
-    <h1 class="text">Copyright 2017 ThoughtWorks</h1>
+    <h1 class="text"></h1>
   </div>
 </template>
 
@@ -21,7 +21,6 @@ export default {}
     height: 20px
     text-align: center
     background-color: #fff
-    color: blue
     box-shadow: 0 -1px 1px rgba(0, 0, 0, .1)
     .text
       display: inline-block

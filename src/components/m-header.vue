@@ -1,5 +1,6 @@
 <template>
   <div class="m-header">
+    <img src="../assets/cruise.svg"/>
   </div>
 </template>
 

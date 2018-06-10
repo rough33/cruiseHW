@@ -76,8 +76,7 @@
           </Card>
           </Col>
         </Row>
-        <div class="container">
-          <Menu mode="horizontal" :theme="theme1" active-name="1">
+          <Menu mode="horizontal" active-name="1">
             <MenuItem name="1"> All
             </MenuItem>
             <MenuItem class="phy-tab" name="2"> Physical
@@ -90,7 +89,6 @@
               <span class="icon-th-list"></span>
             </b-nav-form>
           </Menu>
-        </div>
         <Row class="machine-item">
           <Col span="24">
           <Card>
@@ -111,7 +109,9 @@
                 </Col>
                 <Col class="explorer-wrapper">
                 <Button class="add" size="small"><span class="icon-plus"></span></Button>
-                <Tag>Chrome<span class="icon-trash"></span></Tag>
+                <Tag class="resources" v-for="(i, index) in resources" :key="index">{{i}}
+                  <span class="icon-trash" @click="()=>deleteRes(i)"></span>
+                </Tag>
                 </Col>
               </Row>
               </Col>
@@ -138,7 +138,9 @@
                 </Col>
                 <Col class="explorer-wrapper">
                 <Button class="add" size="small"><span class="icon-plus"></span></Button>
-                <Tag>Chrome<span class="icon-trash"></span></Tag>
+                <Tag class="resources" v-for="(i,index) in resources" :key="index">{{i}}
+                  <span class="icon-trash" @click.stop.prevent="deleteRes(i)"></span>
+                </Tag>
                 <Button class="deny-btn" size="small"><span class="icon-deny"></span>Deny</Button>
                 </Col>
               </Row>
@@ -166,7 +168,9 @@
                 </Col>
                 <Col class="explorer-wrapper">
                 <Button class="add" size="small"><span class="icon-plus"></span></Button>
-                <Tag>Chrome<span class="icon-trash"></span></Tag>
+                <Tag class="resources" v-for="(i,index) in resources" :key="index">{{i}}
+                  <span class="icon-trash" @click.stop.prevent="deleteRes(i)"></span>
+                </Tag>
                 <Button class="deny-btn" size="small"><span class="icon-deny"></span>Deny</Button>
                 </Col>
               </Row>
@@ -194,7 +198,9 @@
                 </Col>
                 <Col class="explorer-wrapper">
                 <Button class="add" type="primary" size="small"><span class="icon-plus"></span></Button>
-                <Tag>Chrome<span class="icon-trash"></span></Tag>
+                <Tag class="resources" v-for="(i,index) in resources" :key="index">{{i}}
+                  <span class="icon-trash" @click.stop.prevent="deleteRes(i)"></span>
+                </Tag>
                 <Button class="deny-btn" size="small"><span class="icon-deny"></span>Deny</Button>
                 </Col>
               </Row>
@@ -223,7 +229,9 @@
                 </Col>
                 <Col class="explorer-wrapper">
                 <Button class="add" size="small"><span class="icon-plus"></span></Button>
-                <Tag>Chrome<span class="icon-trash"></span></Tag>
+                <Tag class="resources" :resouces="resources" v-for="(i,index) in resources" :key="index">{{i}}
+                  <span class="icon-trash" @click="deleteRes(i)"></span>
+                </Tag>
                 </Col>
               </Row>
               </Col>
@@ -250,8 +258,10 @@
                 <span>/var/lib/cruise-agent</span>
                 </Col>
                 <Col class="explorer-wrapper">
-                <Button class="add" size="small"><span class="icon-plus"></span></Button>
-                <Tag>Chrome<span class="icon-trash"></span></Tag>
+                <Button class="add" size="small" @click="handleRender"><span class="icon-plus"></span></Button>
+                <Tag class="resources" v-for="(i,index) in resources" :key="index">{{i}}
+                  <span class="icon-trash" @click="deleteRes(i)"></span>
+                </Tag>
                 </Col>
               </Row>
               </Col>
@@ -266,6 +276,38 @@
 
 <script>
 export default {
+  data () {
+    return {
+      resources: ['Chrome', 'Safari', 'Ubuntu', 'Firefox'],
+      resourceCounter: 4
+    }
+  },
+  methods: {
+    deleteRes (x) {
+      for (let i = 0; i < this.resources.length; i++) {
+        if (this.resources[i] === x) {
+          this.resources.splice(i, 1)
+        }
+      }
+    },
+    handleRender () {
+      this.$Modal.confirm({
+        render: (h) => {
+          return h('Input', {
+            props: {
+              value: this.resources,
+              autofocus: true
+            },
+            on: {
+              input: (val) => {
+                this.resources.push(val)
+              }
+            }
+          })
+        }
+      })
+    }
+  }
 }
 </script>
 
@@ -313,20 +355,18 @@ export default {
             float: right
         .status-card
           margin-left: 12px
-      .container
-        padding: 12px 0
-        .phy-tab
-          border-left: 1px solid #E1E4E6
-        .vir-tab
-          border-left: 1px solid #E1E4E6
-          border-right: 1px solid #E1E4E6
-        .search-tab
-          padding: 14px 0 0 40px
-          .icon-th-card
-            padding-left: 80px
-          .icon-th-list
-            padding-left: 20px
-            color: #00B4CF
+      .phy-tab
+        border-left: 1px solid #E1E4E6
+      .vir-tab
+        border-left: 1px solid #E1E4E6
+        border-right: 1px solid #E1E4E6
+      .search-tab
+        padding: 14px 0 0 40px
+        .icon-th-card
+          padding-left: 80px
+        .icon-th-list
+          padding-left: 20px
+          color: #00B4CF
       .machine-item
         margin: 12px 0
         .icon-desktop
@@ -351,6 +391,14 @@ export default {
            background: #00B4CF
            border: #00B4CF
            color: #fff
+          .resources
+            background-color: #EFEFEF
+            font-size: 14px
+            font-family: Avenir, Helvetica, Arial, sans-serif
+            .icon-trash
+              padding-left: 8px
+              font-size: 16px
+
           .deny-btn
             float: right
             background: #00B4CF
