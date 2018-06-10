@@ -191,7 +191,7 @@ export default {
     padding: 480px 0 0 20px
     color: #999
     font-size: 12px
-    height: 910px
+    height: 810px
     overflow: hidden
     .history-title
       font-size: 24px

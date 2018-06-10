@@ -10,7 +10,7 @@
           <Col>
           <Row>
             <Col><span class="icon-desktop"></span>
-            <span class="machine-address">bjstdmngbgr01.thoughtworks.com</span>
+            <span class="machine-address"><strong>bjstdmngbgr01.thoughtworks.com</strong></span>
             <Button class="machine-status-warning" type="warning" size="small">warning</Button>
             <span class="icon-info icon-info-warning"></span>
             <span class="machine-ip">192.168.1.102</span>
@@ -93,6 +93,7 @@ export default {
           font-size: 16px
         .machine-address
           padding:0 20px
+          color: #00B4CF
         .machine-status-idle
           padding:0 20px
           background-color:#7FBC39
