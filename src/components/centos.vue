@@ -32,6 +32,7 @@
         </Row>
         <b-modal id="modalPrevent3"
              ref="modal"
+             title="Separate multiple resource name with commas"
              @ok="handleOk"
              @shown="clearName">
       <form @submit.stop.prevent="handleSubmit">

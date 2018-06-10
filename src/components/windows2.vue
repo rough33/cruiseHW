@@ -30,7 +30,7 @@
       </Card>
       </Col>
     </Row>
-    <b-modal id="modalPrevent2" ref="modal" @ok="handleOk" @shown="clearName">
+    <b-modal id="modalPrevent2" title="Separate multiple resource name with commas" ref="modal" @ok="handleOk" @shown="clearName">
       <form @submit.stop.prevent="handleSubmit">
         <b-form-input type="text" placeholder="e.g. Chrome,Firefox" v-model="inputRes"></b-form-input>
       </form>
