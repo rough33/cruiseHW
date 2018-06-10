@@ -47,7 +47,7 @@
       <Layout class="content-wrapper">
         <Row class="overview">
           <Col span="8">
-          <div id="wrap-building">
+          <div class="wrap building">
           <Card class="building-card">
             <Row>
               <Col span="8"><strong>Building</strong></Col>
@@ -59,7 +59,7 @@
           </div>
           </Col>
           <Col span="8">
-          <div id="wrap-idle">
+          <div class="wrap idle">
           <Card class="idle-card">
             <Row>
               <Col span="8"><strong>Idle</strong></Col>
@@ -196,8 +196,9 @@ export default {
     .history-title
       font-size: 24px
 
-#wrap-building:after
-  content: '\f013'
+.wrap:after
+  // content: '\f013'
+  content: var(--content)
   font-family: cruise
   font-style: normal
   font-weight: normal
@@ -210,18 +211,8 @@ export default {
   z-index: 2
   overflow: hidden
   opacity: .4
-#wrap-idle:after
-  content: "\f0f4"
-  font-family: cruise
-  font-style: normal
-  font-weight: normal
-  color: #fff
-  position: absolute
-  font-size: 85px
-  top: 50%
-  left: 50%
-  margin: -65px 0 0 -50px
-  z-index: 2
-  overflow: hidden
-  opacity: .4
+.wrap.building
+  --content: '\f013'
+.wrap.idle
+  --content: "\f0f4"
 </style>
