@@ -1,6 +1,6 @@
 <template>
   <div class="c-footer">
-    <h1 class="text"></h1>
+    <h1 class="text">© Copyright 2017 Thought<strong>Works</strong></h1>
   </div>
 </template>
 
@@ -9,9 +9,6 @@ export default {}
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
-  // @import "~common/stylus/variable"
-  // @import "~common/stylus/mixin"
-
   .c-footer
     position: fixed
     left: 0
@@ -21,6 +18,7 @@ export default {}
     height: 20px
     text-align: center
     background-color: #fff
+    color: #2D4054
     box-shadow: 0 -1px 1px rgba(0, 0, 0, .1)
     .text
       display: inline-block
